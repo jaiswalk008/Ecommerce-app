@@ -3,7 +3,7 @@
   display: flex;
   list-style: none;
   font-weight: bold;
-  
+  margin-top: 15px;
 }
 .header-list > li{
   margin-left: 20px;
@@ -35,4 +35,13 @@
   height: 100px;
   text-align: center;
   color:white
+}
+.card-image{
+  width: 250px;
+  height: 250px;
+  transition: transform 0.4s ease-in-out;
+ 
+}
+.card-image:hover{
+  transform: scale(1.1); 
 }

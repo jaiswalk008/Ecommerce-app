@@ -3,7 +3,7 @@ const Card = ({element}) => {
         <div style={{width:"300px"}} className="d-flex m-3 justify-content-center flex-column">
             <div className="text-center">
             <h3>{element.title}</h3>
-            <img style={{width:"250px", height:"250px"}} src={element.imageUrl}
+            <img className="card-image"  src={element.imageUrl}
             alt="item"></img>
             </div>
             <div className="m-2">

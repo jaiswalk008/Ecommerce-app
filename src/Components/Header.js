@@ -1,4 +1,5 @@
 import '../App.css'
+import Cart from './Cart/Cart';
 const Header = () =>{
 
     return (
@@ -10,7 +11,7 @@ const Header = () =>{
                         <li>STORE</li>
                         <li>ABOUT</li>
                     </ul>
-                    <span className='text-end p-2 fs-4 w-100 text-light'>Cart🛒</span>
+                    <Cart/>
                 </div>
                 
             </nav>
