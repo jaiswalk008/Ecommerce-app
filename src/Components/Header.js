@@ -1,6 +1,6 @@
 import '../App.css'
 import Cart from './Cart/Cart';
-const Header = () =>{
+const Header = (props) =>{
 
     return (
         <div>

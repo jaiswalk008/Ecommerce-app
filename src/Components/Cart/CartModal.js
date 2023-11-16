@@ -1,16 +1,34 @@
 import './Cart.css'
-import {productsArr} from '../constant'
+// import {productsArr} from '../constant'
 import CartItem from './CartItem';
-import { useState } from 'react';
+import {useContext, useState } from 'react';
+import CartContext from '../Store/cart-context';
+import findProduct from '../Helpers/findProduct';
 const CartModal = (props) =>{
-    const [products ,setProducts] = useState(productsArr);
-    const removeItemHandler = (e) =>{
-        const ind = e.target.id;
-        // console.log(ind) ind= index
-        const updatedProducts = [...products];
-        updatedProducts.splice(ind,1)
-        setProducts(updatedProducts);
-    }
+    const cartCtx = useContext(CartContext);
+    const [products ,setProducts] = useState(cartCtx.items);
+    
+    //cartItems is changing but re-rendering is not happening becasue modal is above root
+    const removeItemHandler = (productId) => {
+        const product = findProduct(cartCtx.items, productId)[0];
+        const amount = product.price * product.qty;
+      
+        const updatedItems = cartCtx.items.filter((item) => +item.id !== +productId);
+        
+        setProducts(updatedItems);
+        
+        cartCtx.addTotal(-amount);
+        // Update context state
+        cartCtx.setItems(updatedItems)
+        // cartCtx.items = (updatedItems);
+        // cartCtx.addTotal(-amount);
+      };
+    // const totalHandler = (amount) =>{
+    //     setTotal((prevTotal) => {
+    //         prevTotal = prevTotal+amount;
+    //         return prevTotal>0? prevTotal : 0; 
+    //     });
+    // }
     return (
         <div className="modal">
             <div className="modal-content">
@@ -23,12 +41,12 @@ const CartModal = (props) =>{
                     <span>Quantity</span>
                 </section>
                 {products.map((element ,index) => {
-                    return <CartItem key={index*index} removeItem={removeItemHandler} id={index} element={element}/>;
+                    return <CartItem  key={index*index} removeItem={() => removeItemHandler(element.id)} element={element}/>;
                 })}
                 
-                <div c>
-                    <span className='float-end mt-1 fs-4'>Rs. 220</span>
-                    <strong className='me-4 float-end fs-3'>Total</strong>
+                <div className='text-end'>
+                    <strong className='me-4  fs-3'>Total</strong>
+                    <span className=' mt-1 fs-4'>Rs. {cartCtx.total}</span>
                 </div>
             </div>
         </div>

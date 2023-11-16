@@ -30,6 +30,11 @@
     padding: 2px;
     float: right;
   }
+  .close:hover{
+    background-color: black;
+    color: rgb(255, 255, 255);
+     
+  }
   .cart-header{
     display: flex;
     justify-content: center;
@@ -61,4 +66,10 @@
     margin-right: 20px;
     border: 1px solid #56CCF2;
     
+  }
+  .total-items{
+    background-color: #4a4a4a;
+    border: 1px;
+    border-radius: 5px;
+    padding: 5px;
   }

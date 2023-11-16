@@ -1,8 +1,21 @@
+import CartContext from '../Store/cart-context';
 import './Cart.css'
-import { useState } from 'react';
-const CartItem = ({element , id , removeItem}) =>{
-    const [qty , setQty] = useState('1');
-    const qtyHandler = (e) => setQty(e.target.value)
+import { useContext, useState } from 'react';
+const CartItem = ({element , id , removeItem }) =>{
+    // console.log(element)
+    const cartCtx = useContext(CartContext);
+    const [qty , setQty] = useState(element.qty);
+    const qtyHandler = (e) => {
+        const newQty = parseInt(e.target.value, 10);
+        cartCtx.items.forEach((item) => {
+            if(+item.id===+element.id){
+                cartCtx.addTotal(element.price*(newQty-qty))
+                item.qty = newQty;
+            }
+        })
+        setQty((prevQty) => newQty);
+      };
+      
     
     return (
         <>
@@ -13,10 +26,10 @@ const CartItem = ({element , id , removeItem}) =>{
                 </span>
                 
                     
-                <span className='fs-4'>Rs. {element.price}</span>
+                <span className='fs-4'>Rs. {element.price * qty}</span>
             
                 <span className='cart-item-details'>
-                    <input className='' onChange={qtyHandler} type='text' min={'1'} name='qty' id='qty' value={qty}/>
+                    <input  onChange={qtyHandler} type='number' min={'1'} name='qty' id='qty' value={qty}/>
                     <button id={id} onClick={removeItem} className='btn mb-2 btn-danger'>Remove</button>
                 </span>
                 
