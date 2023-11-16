@@ -2,7 +2,7 @@ import './Cart.css'
 // import {productsArr} from '../constant'
 import CartItem from './CartItem';
 import {useContext, useState } from 'react';
-import CartContext from '../Store/cart-context';
+import CartContext from '../Context/cart-context';
 import findProduct from '../Helpers/findProduct';
 const CartModal = (props) =>{
     const cartCtx = useContext(CartContext);

@@ -1,0 +1,13 @@
+.tourlist{
+    max-width: 900px;
+    margin: 20px auto;
+}
+.tourlist > div{
+    font-size: 1.2rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
+.city , .desc {
+    color: #777;
+    width: 250px;
+}

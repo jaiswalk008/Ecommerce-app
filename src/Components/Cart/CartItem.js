@@ -1,4 +1,4 @@
-import CartContext from '../Store/cart-context';
+import CartContext from '../Context/cart-context';
 import './Cart.css'
 import { useContext, useState } from 'react';
 const CartItem = ({element , id , removeItem }) =>{

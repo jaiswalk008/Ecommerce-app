@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import { useContext, useState } from "react";
 import CartModal from "./CartModal";
-import CartContext from "../Store/cart-context";
+import CartContext from "../Context/cart-context";
 const Cart = (props) =>{
     const [showModal , setShowModal] = useState(false);
     const cartCtx = useContext(CartContext);

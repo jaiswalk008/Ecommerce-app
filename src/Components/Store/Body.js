@@ -2,7 +2,7 @@ import { productsArr } from "../constant";
 import Card from "./Card";
 import "./Body.css"
 import { useContext, useState } from "react";
-import CartContext from "../Store/cart-context";
+import CartContext from "../Context/cart-context";
 import findProduct from "../Helpers/findProduct";
 import CartModal from '../Cart/CartModal';
 import { createPortal } from "react-dom";
