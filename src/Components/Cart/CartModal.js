@@ -20,15 +20,8 @@ const CartModal = (props) =>{
         cartCtx.addTotal(-amount);
         // Update context state
         cartCtx.setItems(updatedItems)
-        // cartCtx.items = (updatedItems);
-        // cartCtx.addTotal(-amount);
       };
-    // const totalHandler = (amount) =>{
-    //     setTotal((prevTotal) => {
-    //         prevTotal = prevTotal+amount;
-    //         return prevTotal>0? prevTotal : 0; 
-    //     });
-    // }
+
     return (
         <div className="modal">
             <div className="modal-content">

@@ -11,10 +11,21 @@
   font-family: 'Courier New', Courier, monospace;
   
 }
-.header-list > li:hover{
+.active{
+  color: rgb(171, 171, 171) !important;
+  text-decoration: underline !important;
+}
+.header-list a{
+  color: white;
+  text-decoration: none;
+}
+.header-list a:hover{
   cursor: pointer;
   color: rgb(171, 171, 171);
+  text-decoration: underline;
 }
+
+
 .heading{
   color: white;
   background-color: #777777;
