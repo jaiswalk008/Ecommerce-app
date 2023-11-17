@@ -1,0 +1,21 @@
+.contact-div{
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    
+
+}
+/* .contact-div > form{
+    width: 500px;
+} */
+label{
+    font-size: large;
+    font-weight: 500;
+    margin: 10px;
+}
+input{
+    width: 400px !important;
+    border-radius: 5px;
+    height: 2.2rem !important;
+}
