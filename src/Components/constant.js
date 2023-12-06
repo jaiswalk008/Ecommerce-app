@@ -8,7 +8,7 @@ export const productsArr = [
     price: 100,
     
     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-    
+    ratings:4.2
     },
     
     {
@@ -18,7 +18,7 @@ export const productsArr = [
     price: 50,
     
     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-    
+    ratings:4.0
     },
     
     {
@@ -28,7 +28,7 @@ export const productsArr = [
     price: 70,
     
     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-    
+    ratings:3.9
     },
     
     
@@ -40,7 +40,7 @@ export const productsArr = [
     price: 100,
     
     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
-    
+    ratings:4.3
     }
     
     ]

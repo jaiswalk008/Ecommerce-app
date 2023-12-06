@@ -38,8 +38,6 @@ const ContactUs = (props) =>{
         console.log(error)
        }
     }
-
-
     return (
         <div>
             <h2 className="text-center"> Please enter your details</h2>

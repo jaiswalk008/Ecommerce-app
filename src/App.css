@@ -23,6 +23,7 @@
   cursor: pointer;
   color: rgb(171, 171, 171);
   text-decoration: underline;
+  /* font-size: 1.6rem; */
 }
 
 
@@ -46,13 +47,4 @@
   height: 100px;
   text-align: center;
   color:white
-}
-.card-image{
-  width: 250px;
-  height: 250px;
-  transition: transform 0.4s ease-in-out;
- 
-}
-.card-image:hover{
-  transform: scale(1.1); 
 }

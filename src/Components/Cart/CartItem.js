@@ -14,7 +14,7 @@ const CartItem = ({element , id , removeItem }) =>{
             }
         })
         setQty((prevQty) => newQty);
-      };
+    };
       
     
     return (
