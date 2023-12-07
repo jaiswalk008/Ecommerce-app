@@ -8,6 +8,7 @@ import About from './Components/About/About';
 import Home from './Components/Home/Home';
 import ContactUs from './Components/Contact/ContactUs';
 import Product from './Components/Store/Product';
+import Login from './Components/Login';
 function App() {
   
   return (
@@ -21,6 +22,8 @@ function App() {
         <Route path="/store" exact><Body/></Route>
         <Route path="/store/:productId"><Product/></Route>
         <Route path="/about"><About/></Route>
+        <Route path="/login"><Login/></Route>
+
         <Route path="/contactus"><ContactUs/></Route>
       </Switch>
       <Footer/>
