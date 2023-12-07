@@ -1,4 +1,6 @@
 import React from 'react';
+import { useContext } from 'react';
+import { AuthContext } from './Components/Context/AuthContext';
 import './App.css';
 import Header from './Components/Header';
 import Body from './Components/Store/Body';
@@ -10,17 +12,27 @@ import ContactUs from './Components/Contact/ContactUs';
 import Product from './Components/Store/Product';
 import Login from './Components/Login';
 function App() {
-  
+  const authCtx = useContext(AuthContext);
+
   return (
     <div className="App">
       <Header/>
       <Switch>
         <Route path ="/" exact>
-          <Redirect to="/store" />
+          {authCtx.isLoggedIn && <Redirect to="/store" />}
+          {!authCtx.isLoggedIn && <Redirect to="/login" />}
+
         </Route>
         <Route path="/home"><Home/></Route>
-        <Route path="/store" exact><Body/></Route>
-        <Route path="/store/:productId"><Product/></Route>
+        <Route path="/store" exact>
+        {authCtx.isLoggedIn && <Body/>}
+        {!authCtx.isLoggedIn && <Redirect to="/login" />}
+
+        </Route>
+        <Route path="/store/:productId">
+        {authCtx.isLoggedIn && <Product/>}
+        {!authCtx.isLoggedIn && <Redirect to="/login" />}
+        </Route>
         <Route path="/about"><About/></Route>
         <Route path="/login"><Login/></Route>
 
