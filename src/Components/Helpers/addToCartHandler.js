@@ -1,11 +1,12 @@
  
 import findProduct from "./findProduct";
 import { productsArr } from "../constant";
- 
-const addToCartHandler = (id , cartCtx)=>{
+import axios from "axios";
+import getEmail from './getEmail'
+const addToCartHandler = async (id , cartCtx)=>{
      
     console.log(id)
-    const product = findProduct(productsArr , id)[0];
+    let product = findProduct(productsArr , id)[0];
     // console.log(product)
     let itemAlreadyInCart = false;
     
@@ -13,11 +14,35 @@ const addToCartHandler = (id , cartCtx)=>{
         if(+item.id===+id){
             item.qty+=1;
             itemAlreadyInCart = true;
+            product = {...item};
         }
     })
-    
-    if(!itemAlreadyInCart) cartCtx.addItems({...product,qty:1});
+   
+    console.log(product)
+    if(!itemAlreadyInCart) {
+        // cartCtx.addItems({...product,qty:1});
+        try {
+            const res =await axios.post('https://crudcrud.com/api/507ac5dc31fe4ea5b73eaf057fbcd368/'+getEmail(),
+            {...product,qty:1} )
+            console.log('new item in the cart')
+            console.log(res.data)
+            cartCtx.addItems(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }else{
+        try {
+            const { _id, ...payload } = product;
+            const res =await axios.put(`https://crudcrud.com/api/507ac5dc31fe4ea5b73eaf057fbcd368/${getEmail()}/${product._id}`,
+            {...payload,qty:product.qty+1} )
+            console.log('item already in cart')
+            console.log(res.data);
+            // cartCtx.addItems(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
     cartCtx.addTotal(product.price);
-    console.log(cartCtx.items);
+    // console.log(cartCtx.items);
 }
 export default addToCartHandler;

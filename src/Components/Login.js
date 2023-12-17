@@ -29,14 +29,14 @@ const Login = (props) =>{
         
         const response  = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+process.env.REACT_APP_API_KEY,
         userDetails);
-       
+        localStorage.setItem('email' , userDetails.email);
         console.log(response);
         authCtx.setToken(response.data.idToken)
         history.push('/store');
         formReset();
        } catch (error) {
         // console.log('error')
-        setErrorMessage(error.response.data.error.message)
+        setErrorMessage(error.response.data.error.message);
        }
     }
     return (

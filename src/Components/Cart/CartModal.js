@@ -4,22 +4,36 @@ import CartItem from './CartItem';
 import {useContext, useState } from 'react';
 import CartContext from '../Context/cart-context';
 import findProduct from '../Helpers/findProduct';
+import axios from 'axios';
 const CartModal = (props) =>{
     const cartCtx = useContext(CartContext);
     const [products ,setProducts] = useState(cartCtx.items);
-    
+    const email = localStorage.getItem('email');
+    let transformedEmail = '';
+    if(email) {
+        email.split('').forEach((c) => {
+            if(c!=='@' && c!=='.' && c!==' ') transformedEmail +=(c)
+        })
+    }
     //cartItems is changing but re-rendering is not happening becasue modal is above root
-    const removeItemHandler = (productId) => {
+    const removeItemHandler =async (productId) => {
         const product = findProduct(cartCtx.items, productId)[0];
         const amount = product.price * product.qty;
+        console.log(product);
+        try{
+            const url = `https://crudcrud.com/api/507ac5dc31fe4ea5b73eaf057fbcd368/${transformedEmail}/${product._id}`;
+            await axios.delete(url);
+            
+            const updatedItems = cartCtx.items.filter((item) => +item.id !== +productId);
+            setProducts(updatedItems);
+        
+            cartCtx.addTotal(-amount);
+            // Update context state
+            cartCtx.setItems(updatedItems)
+        }
+        catch(err){console.log(err);}
+        
       
-        const updatedItems = cartCtx.items.filter((item) => +item.id !== +productId);
-        
-        setProducts(updatedItems);
-        
-        cartCtx.addTotal(-amount);
-        // Update context state
-        cartCtx.setItems(updatedItems)
       };
 
     return (
