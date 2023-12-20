@@ -3,8 +3,12 @@
     justify-content: center;
     border: 2px solid black;
     border-radius: 10px;
+    flex-direction: column;
+    width: 500px !important;
+}
+.contact-div > form{
+    margin-bottom: 10px;
     
-
 }
 /* .contact-div > form{
     width: 500px;
@@ -15,7 +19,7 @@ label{
     margin: 10px;
 }
 input{
-    width: 400px !important;
+    /* width: 400px !important; */
     border-radius: 5px;
     height: 2.2rem !important;
 }

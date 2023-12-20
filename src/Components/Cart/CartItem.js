@@ -17,7 +17,7 @@ const CartItem = ({ element, id, removeItem }) => {
         const { _id, ...payload } = item;
         try {
           const res = await axios.put(
-            `https://crudcrud.com/api/507ac5dc31fe4ea5b73eaf057fbcd368/${getEmail()}/${item._id}`,
+            `https://crudcrud.com/api/716065ba00794fa7b1b10f66a076eb42/${getEmail()}/${item._id}`,
             { ...payload, qty: newQty }
           );
           console.log('Item already in cart:', res.data);
@@ -36,7 +36,7 @@ const CartItem = ({ element, id, removeItem }) => {
 
     return () => {
         console.log('clearing')
-      clearTimeout(timer);
+        clearTimeout(timer);
     };
   }, [qty]);
 

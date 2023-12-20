@@ -9,9 +9,12 @@ import { AuthContextProvider } from './Components/Context/AuthContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    
+    {/* as we are using react-router-dom in authcontentprovider so it needs to be wrapped inside
+    the BrowserRouter copmponent */}
+    <BrowserRouter>
     <AuthContextProvider>
-    <CartContextProvider><BrowserRouter><App/></BrowserRouter></CartContextProvider>
+    <CartContextProvider><App/></CartContextProvider>
     </AuthContextProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

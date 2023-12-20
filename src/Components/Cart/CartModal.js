@@ -21,7 +21,7 @@ const CartModal = (props) =>{
         const amount = product.price * product.qty;
         console.log(product);
         try{
-            const url = `https://crudcrud.com/api/507ac5dc31fe4ea5b73eaf057fbcd368/${transformedEmail}/${product._id}`;
+            const url = `https://crudcrud.com/api/716065ba00794fa7b1b10f66a076eb42/${transformedEmail}/${product._id}`;
             await axios.delete(url);
             
             const updatedItems = cartCtx.items.filter((item) => +item.id !== +productId);

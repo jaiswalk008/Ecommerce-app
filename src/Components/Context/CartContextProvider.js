@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CartContext from "./cart-context"
 import axios from "axios";
 import getEmail from "../Helpers/getEmail";
-
+import { AuthContext } from "./AuthContext";
 const CartContextProvider = (props) => {
 const [items , setItems] = useState([]);
 const [total , setTotal] = useState(0);
+const authCtx = useContext(AuthContext);
 
 const fetchCart = async () => {
     try {
       const res = await axios.get(
-        "https://crudcrud.com/api/507ac5dc31fe4ea5b73eaf057fbcd368/" +
+        "https://crudcrud.com/api/716065ba00794fa7b1b10f66a076eb42/" +
           getEmail()
       );
       console.log(res);
@@ -27,18 +28,23 @@ const fetchCart = async () => {
 
   };
 
-  useEffect(() => {
-    if(getEmail) fetchCart();
-  }, []);
-const addItemHandler = (item)=>{
+  const addItemHandler = (item)=>{
     const updatedItems = [...items,item];
     setItems(updatedItems);
 }
+const setItemsHandler = (itemsArr) =>{
+  setItems(itemsArr);
+  console.log('removed item')
+}
+  useEffect(() => {
+    if(getEmail()) fetchCart();
+    if(!authCtx.token) setItems([])
+  }, [authCtx.token]);
+
+
 const addTotalHandler = (price) => setTotal(total+ +price);
 
-const setItemsHandler = (itemsArr) =>{
-    setItems(itemsArr);
-}
+
   
 const cartContext = {
     items:items,
